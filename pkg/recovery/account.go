@@ -30,7 +30,7 @@ var (
 
 // AccountMetaData contains all meta data concerning the Account contract.
 var AccountMetaData = &bind.MetaData{
-	ABI: "[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"server\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"pubkey\",\"type\":\"bytes\"}],\"name\":\"recovery\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"server\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bytes\",\"name\":\"signature\",\"type\":\"bytes\"},{\"internalType\":\"uint256\",\"name\":\"passHash\",\"type\":\"uint256\"}],\"name\":\"recovery\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
 }
 
 // AccountABI is the input ABI used to generate the binding from.
@@ -179,23 +179,23 @@ func (_Account *AccountTransactorRaw) Transact(opts *bind.TransactOpts, method s
 	return _Account.Contract.contract.Transact(opts, method, params...)
 }
 
-// Recovery is a paid mutator transaction binding the contract method 0x50a8395d.
+// Recovery is a paid mutator transaction binding the contract method 0x5936807c.
 //
-// Solidity: function recovery(bytes32 server, bytes data, bytes signature, bytes pubkey) returns()
-func (_Account *AccountTransactor) Recovery(opts *bind.TransactOpts, server [32]byte, data []byte, signature []byte, pubkey []byte) (*types.Transaction, error) {
-	return _Account.contract.Transact(opts, "recovery", server, data, signature, pubkey)
+// Solidity: function recovery(bytes32 server, bytes data, bytes signature, uint256 passHash) returns()
+func (_Account *AccountTransactor) Recovery(opts *bind.TransactOpts, server [32]byte, data []byte, signature []byte, passHash *big.Int) (*types.Transaction, error) {
+	return _Account.contract.Transact(opts, "recovery", server, data, signature, passHash)
 }
 
-// Recovery is a paid mutator transaction binding the contract method 0x50a8395d.
+// Recovery is a paid mutator transaction binding the contract method 0x5936807c.
 //
-// Solidity: function recovery(bytes32 server, bytes data, bytes signature, bytes pubkey) returns()
-func (_Account *AccountSession) Recovery(server [32]byte, data []byte, signature []byte, pubkey []byte) (*types.Transaction, error) {
-	return _Account.Contract.Recovery(&_Account.TransactOpts, server, data, signature, pubkey)
+// Solidity: function recovery(bytes32 server, bytes data, bytes signature, uint256 passHash) returns()
+func (_Account *AccountSession) Recovery(server [32]byte, data []byte, signature []byte, passHash *big.Int) (*types.Transaction, error) {
+	return _Account.Contract.Recovery(&_Account.TransactOpts, server, data, signature, passHash)
 }
 
-// Recovery is a paid mutator transaction binding the contract method 0x50a8395d.
+// Recovery is a paid mutator transaction binding the contract method 0x5936807c.
 //
-// Solidity: function recovery(bytes32 server, bytes data, bytes signature, bytes pubkey) returns()
-func (_Account *AccountTransactorSession) Recovery(server [32]byte, data []byte, signature []byte, pubkey []byte) (*types.Transaction, error) {
-	return _Account.Contract.Recovery(&_Account.TransactOpts, server, data, signature, pubkey)
+// Solidity: function recovery(bytes32 server, bytes data, bytes signature, uint256 passHash) returns()
+func (_Account *AccountTransactorSession) Recovery(server [32]byte, data []byte, signature []byte, passHash *big.Int) (*types.Transaction, error) {
+	return _Account.Contract.Recovery(&_Account.TransactOpts, server, data, signature, passHash)
 }

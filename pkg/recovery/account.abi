@@ -17,9 +17,9 @@
         "type": "bytes"
       },
       {
-        "internalType": "bytes",
-        "name": "pubkey",
-        "type": "bytes"
+        "internalType": "uint256",
+        "name": "passHash",
+        "type": "uint256"
       }
     ],
     "name": "recovery",

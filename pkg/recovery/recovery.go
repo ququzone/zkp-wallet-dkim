@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"math/big"
 	"os"
 	"strings"
 
@@ -64,8 +65,8 @@ func (r *Recovery) Recover(server, subject string, data, signature []byte) (stri
 		return "", ErrSubject
 	}
 	accountAddr := subject[len(prefix) : len(prefix)+42]
-	pubkey := subject[len(prefix)+42:]
-	pubkeyBytes, err := hex.DecodeString(pubkey)
+	passHash := subject[len(prefix)+42:]
+	passHashBytes, err := hex.DecodeString(passHash)
 	if err != nil {
 		return "", err
 	}
@@ -80,7 +81,8 @@ func (r *Recovery) Recover(server, subject string, data, signature []byte) (stri
 	copy(serverBytes[:32], sha.Sum(nil)[:])
 	log.Printf("recovery server: %s with bytes: %s\n", server, hex.EncodeToString(serverBytes[:]))
 
-	tx, err := account.Recovery(r.transactor, serverBytes, data, signature, pubkeyBytes)
+	// TODO check email?
+	tx, err := account.Recovery(r.transactor, serverBytes, data, signature, new(big.Int).SetBytes(passHashBytes))
 	if err != nil {
 		return "", err
 	}
