@@ -61,7 +61,7 @@ func NewRecovery(keyFile, keyPassphrase, rpc string) (*Recovery, error) {
 
 func (r *Recovery) Recover(server, subject string, data, signature []byte) (string, error) {
 	prefix := fmt.Sprintf("01%d", r.chainId)
-	if !strings.HasPrefix(subject, prefix) || len(subject) != len(prefix)+42+128 {
+	if !strings.HasPrefix(subject, prefix) || len(subject) != len(prefix)+42+64 {
 		return "", ErrSubject
 	}
 	accountAddr := subject[len(prefix) : len(prefix)+42]
