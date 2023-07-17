@@ -4,10 +4,13 @@ ZKP Wallet DKIM service
 ## Startup
 
 ```
-export IMAP_SERVER=imap.larksuite.com:993
-export IMAP_USERNAME=
-export IMAP_PASSWORD=
-export KEY_FILE=key
-export KEY_PASSPHRASE=123456
-export RPC=https://babel-api.testnet.iotex.io
+docker build -t iotex-zkp-dkim .
+docker run -d -v "$(realpath .)/key:/key" -name zkp-dkim \
+  -e IMAP_SERVER=imap.larksuite.com:993 \
+  -e IMAP_USERNAME= \
+  -e IMAP_PASSWORD= \
+  -e KEY_FILE=key \
+  -e KEY_PASSPHRASE= \
+  -e RPC=https://babel-api.testnet.iotex.io \
+  iotex-zkp-dkim
 ```
