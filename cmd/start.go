@@ -27,6 +27,8 @@ func start() *cli.Command {
 					log.Fatalf("new recovery error: %v\n", err)
 				}
 
+				log.Printf("DKIM serice started")
+
 				for {
 					mails, err := mail.Fetch(
 						os.Getenv("IMAP_SERVER"),
